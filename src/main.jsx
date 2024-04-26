@@ -15,6 +15,7 @@ import SignUp from './components/SignUp';
 import AuthProvider from './components/AuthProvider';
 import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute';
+import ViewDetails from './components/ViewDetails';
 
 
 const router = createBrowserRouter([
@@ -50,6 +51,13 @@ const router = createBrowserRouter([
       {
         path: '/signin',
         element: <SignIn></SignIn>,
+      },
+      {
+        path: '/viewDetails',
+        element: 
+        <PrivateRoute>
+            <ViewDetails></ViewDetails>
+          </PrivateRoute>,
       },
     ]
   },

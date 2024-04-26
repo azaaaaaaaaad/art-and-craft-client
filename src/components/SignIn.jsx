@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2'
@@ -8,7 +8,10 @@ import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const SignIn = () => {
 
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser, googleLogin } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location);
 
     const handleSignIn = e => {
         e.preventDefault();
@@ -22,6 +25,8 @@ const SignIn = () => {
         signInUser(email, password)
             .then(result => {
                 console.log(result.user);
+                e.target.reset();
+                navigate('/')
                 if (result.user) {
                     Swal.fire({
                         icon: "success",
@@ -30,6 +35,8 @@ const SignIn = () => {
                         timer: 1500
                     });
                 }
+                //navigate after login
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.error(error);
@@ -39,6 +46,16 @@ const SignIn = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+            })
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+            .then(result => {
+                console.log(result.user);
+            })
+            .catch(error => {
+                console.error(error);
             })
     }
 
@@ -76,15 +93,28 @@ const SignIn = () => {
                                 <button className="btn btn-primary">Sign In</button>
                             </div>
                             <p>New Here? please <Link to={'/signup'}><button className="btn btn-sm btn-link">Register</button></Link></p>
-                            <div className="flex justify-around">
+                        </form>
+                        <div className="divider">Social Logins</div>
+                        <div>
+                            <div className="flex justify-around mb-4">
                                 <div>
-                                    <button className="btn"><FaGoogle></FaGoogle>Google</button>
+                                    <button
+                                        onClick={handleGoogleLogin}
+                                        className="btn">
+                                        <FaGoogle></FaGoogle>
+                                        Google
+                                    </button>
                                 </div>
                                 <div>
-                                    <button className="btn"><FaGithub></FaGithub>GitHub</button>
+                                    <button
+                                        className="btn">
+                                        <FaGithub></FaGithub>
+                                        Github
+                                    </button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+
                     </div>
                 </div>
             </div>

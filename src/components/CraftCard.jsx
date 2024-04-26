@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const CraftCard = ({ craft }) => {
@@ -22,7 +23,7 @@ const CraftCard = ({ craft }) => {
                     <p>Rating: {rating}</p>
                     <p>Stock: {stock_status}</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary">View Details</button>
+                        <Link to={'/viewDetails'}><button className="btn btn-primary">View Details</button></Link>
                     </div>
                 </div>
             </div>

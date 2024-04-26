@@ -17,6 +17,19 @@ const SignUp = () => {
         const password = form.password.value;
         console.log(name, email, password);
 
+        // Password validation
+        const uppercaseRegex = /[A-Z]/;
+        const lowercaseRegex = /[a-z]/;
+        if (password.length < 6 || !uppercaseRegex.test(password) || !lowercaseRegex.test(password)) {
+            Swal.fire({
+                icon: "error",
+                title: "Password must contain at least 6 characters with both uppercase and lowercase letters.",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            return;
+        }
+
         //createUser
         createUser(email, password)
             .then(result => {
@@ -29,17 +42,18 @@ const SignUp = () => {
                     body: JSON.stringify(users)
                 })
                     .then(res => res.json())
-                    .then(data => { 
-                        console.log(data) 
+                    .then(data => {
+                        console.log(data)
                         if (data.insertedId) {
                             console.log('user added to DB');
                             Swal.fire({
                                 icon: "success",
-                                title: "User has been added to DB",
+                                title: "User has created and added to DB",
                                 showConfirmButton: false,
                                 timer: 1500
-                              });
+                            });
                         }
+                        e.target.reset();
                     })
             })
             .catch(error => {
@@ -60,7 +74,7 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
-                                <input type="name" name="name" placeholder="email" className="input input-bordered" required />
+                                <input type="name" name="name" placeholder="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
