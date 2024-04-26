@@ -8,6 +8,9 @@ import {
 import Root from './components/Root';
 import Home from './components/Home';
 import Error from './components/Error';
+import AllArtCraft from './components/AllArtCraft';
+import AddCraftItems from './components/AddCraftItems';
+import MyArtCraft from './components/MyArtCraft';
 
 
 const router = createBrowserRouter([
@@ -18,8 +21,20 @@ const router = createBrowserRouter([
     children:[
       {
         path:'/',
-        element: <Home></Home>
-      }
+        element: <Home></Home>,
+      },
+      {
+        path: '/artAndCraft',
+        element: <AllArtCraft></AllArtCraft>,
+      },
+      {
+        path:'/addCraft',
+        element: <AddCraftItems></AddCraftItems>,
+      },
+      {
+        path:'/myArtAndCraft',
+        element: <MyArtCraft></MyArtCraft>,
+      },
     ]
   },
 ]);
