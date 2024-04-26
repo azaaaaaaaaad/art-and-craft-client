@@ -1,49 +1,44 @@
+
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./AuthProvider";
-import { data } from "autoprefixer";
 import Swal from 'sweetalert2'
-import { Link } from "react-router-dom";
+import { FaGoogle, FaGithub } from "react-icons/fa";
 
 
-const SignUp = () => {
+const SignIn = () => {
 
-    const { createUser } = useContext(AuthContext)
+    const { signInUser } = useContext(AuthContext)
 
-    const handleSignUp = e => {
+    const handleSignIn = e => {
         e.preventDefault();
+
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        console.log(email, password);
 
-        //createUser
-        createUser(email, password)
+        //sign in
+        signInUser(email, password)
             .then(result => {
                 console.log(result.user);
-
-                const users = { name, email };
-                fetch(`http://localhost:5000/users/`, {
-                    method: "POST",
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(users)
-                })
-                    .then(res => res.json())
-                    .then(data => { 
-                        console.log(data) 
-                        if (data.insertedId) {
-                            console.log('user added to DB');
-                            Swal.fire({
-                                icon: "success",
-                                title: "User has been added to DB",
-                                showConfirmButton: false,
-                                timer: 1500
-                              });
-                        }
-                    })
+                if (result.user) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Login Successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
             })
             .catch(error => {
                 console.error(error);
+                Swal.fire({
+                    icon: "error",
+                    title: error.message,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
     }
 
@@ -52,16 +47,16 @@ const SignUp = () => {
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col ">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Sign up now!</h1>
+                        <h1 className="text-5xl font-bold">Sign In now!</h1>
                     </div>
                     <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSignUp} className="card-body">
-                            <div className="form-control">
+                        <form onSubmit={handleSignIn} className="card-body">
+                            {/* <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Full Name</span>
                                 </label>
                                 <input type="name" name="name" placeholder="email" className="input input-bordered" required />
-                            </div>
+                            </div> */}
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -78,9 +73,17 @@ const SignUp = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <button className="btn btn-primary">Sign Up</button>
+                                <button className="btn btn-primary">Sign In</button>
                             </div>
-                            <p>Already have ana account? please <Link to={'/signin'}><button className="btn btn-sm btn-link">Login</button></Link></p>
+                            <p>New Here? please <Link to={'/signup'}><button className="btn btn-sm btn-link">Register</button></Link></p>
+                            <div className="flex justify-around">
+                                <div>
+                                    <button className="btn"><FaGoogle></FaGoogle>Google</button>
+                                </div>
+                                <div>
+                                    <button className="btn"><FaGithub></FaGithub>GitHub</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -89,4 +92,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default SignIn;

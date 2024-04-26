@@ -1,13 +1,20 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
+import userImage from '../assets/userImage.png'
 
 
 const Navbar = () => {
+
+    const { user, logOut } = useContext(AuthContext)
 
     const links = <>
         <li> <NavLink to={'/'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Home</NavLink></li>
         <li><NavLink to={'/artAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>All Art & craft Items</NavLink></li>
         <li><NavLink to={'/addCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li>
         <li><NavLink to={'/myArtAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>My Art&Craft List</NavLink></li>
+        <li><NavLink to={'/signin'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Sign In</NavLink></li>
+        <li><NavLink to={'/signup'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Sign Up</NavLink></li>
 
     </>
 
@@ -27,29 +34,30 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                            {links}
+                        {links}
                     </ul>
                 </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
+                <div className="navbar-end ">
                 </div>
-            </div>
-            {/* {
-                user ?
-                    <div className="navbar-end gap-2">
-                        <div className="w-10 rounded-full tooltip tooltip-left" data-tip={user.displayName}>
-                            <img alt="user image" src={user?.photoURL || userImage} />
+                {
+                    user ?
+                        <div className="navbar-end gap-2">
+                            <div className="w-10 rounded-full tooltip tooltip-left" data-tip={user.displayName}>
+                                <img alt="user image" src={user?.photoURL || userImage} />
+                            </div>
+                            <button
+                                onClick={logOut}
+                                className="btn">Sign Out</button>
                         </div>
-                        <button onClick={logOut} className="btn">Sign Out</button>
-                    </div>
-                    :
-                    <div className="navbar-end">
-                        <Link to={'/login'}>
-                            <button className="btn">Login</button>
-                        </Link>
-                    </div>
+                        :
+                        <div className="navbar-end">
+                            <Link to={'/signin'}>
+                                <button className="btn">Sign In</button>
+                            </Link>
+                        </div>
 
-            } */}
+                }
+            </div>
         </div>
     );
 };

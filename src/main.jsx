@@ -13,6 +13,8 @@ import AddCraftItems from './components/AddCraftItems';
 import MyArtCraft from './components/MyArtCraft';
 import SignUp from './components/SignUp';
 import AuthProvider from './components/AuthProvider';
+import SignIn from './components/SignIn';
+import PrivateRoute from './components/PrivateRoute';
 
 
 const router = createBrowserRouter([
@@ -32,7 +34,10 @@ const router = createBrowserRouter([
       },
       {
         path: '/addCraft',
-        element: <AddCraftItems></AddCraftItems>,
+        element:
+          <PrivateRoute>
+            <AddCraftItems></AddCraftItems>
+          </PrivateRoute>,
       },
       {
         path: '/myArtAndCraft',
@@ -41,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/signup',
         element: <SignUp></SignUp>,
+      },
+      {
+        path: '/signin',
+        element: <SignIn></SignIn>,
       },
     ]
   },
