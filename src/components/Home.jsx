@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import CraftCard from "./CraftCard";
 import { Typewriter } from 'react-simple-typewriter'
 import ExtraOne from "./ExtraOne";
+import ExtraTwo from "./ExtraTwo";
 
 
 const Home = () => {
@@ -27,6 +28,7 @@ const Home = () => {
                 }
             </div>
             <ExtraOne></ExtraOne>
+            <ExtraTwo></ExtraTwo>
         </div>
     );
 };

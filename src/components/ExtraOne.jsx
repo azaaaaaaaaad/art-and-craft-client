@@ -29,7 +29,7 @@ const photos = [
     { src: "https://i.ibb.co/hsp6xcD/antique-arts-crafts-era-wood-carving-wood-block-prints.webp", width: 1080, height: 1620 },
     { src: "https://i.ibb.co/CHgzPfr/images.jpg", width: 1080, height: 810 },
     { src: "https://i.ibb.co/qrYCvQc/91xersg8-HGL-AC-SL1500.jpg", width: 1080, height: 610 },
-    { src: "https://i.ibb.co/pRGPVF1/artsandcrafts.jpg", width: 1080, height: 160 },
+    // { src: "https://i.ibb.co/pRGPVF1/artsandcrafts.jpg", width: 1080, height: 160 },
     { src: "https://i.ibb.co/pRGPVF1/artsandcrafts.jpg", width: 1080, height: 810 },
     { src: "https://i.ibb.co/CHgzPfr/images.jpg", width: 1080, height: 720 },
     // { id: "xKhtkhc9HbQ", width: 1080, height: 1440 },
@@ -45,3 +45,5 @@ const ExtraOne = () => {
 };
 
 export default ExtraOne;
+
+
