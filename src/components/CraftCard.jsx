@@ -25,7 +25,7 @@ const CraftCard = ({ craft }) => {
                     <p>Rating: {rating}</p>
                     <p>Stock: {stock_status}</p>
                     <div className="card-actions justify-end">
-                        <Link to={`/viewDetails/${_id}`}><button className="btn btn-primary">View Details</button></Link>
+                        <Link to={`/viewDetails/${_id}`}><button className="btn btn-active">View Details</button></Link>
                     </div>
                 </div>
             </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import userImage from '../assets/userImage.png'
+import { Tooltip } from 'react-tooltip'
 
 
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
         <li><NavLink to={'/artAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>All Art & craft Items</NavLink></li>
         <li><NavLink to={'/addCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li>
         <li><NavLink to={'/myArtAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>My Art&Craft List</NavLink></li>
-       
+
     </>
 
     return (
@@ -40,12 +41,16 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="navbar-end gap-2">
-                            <div className="w-10 rounded-full tooltip tooltip-left" data-tip={user.displayName}>
+                            {/* data-tip={user.displayName} */}
+                            <div className="w-10 rounded-full" data-tip data-for="my-tooltip">
                                 <img alt="user image" src={user?.photoURL || userImage} />
                             </div>
+                            <Tooltip id="my-tooltip" place="left">
+                                Hello to you too!
+                            </Tooltip>
                             <button
                                 onClick={logOut}
-                                className="btn">Sign Out</button>
+                                className="btn ">Sign Out</button>
                         </div>
                         :
                         <div className="navbar-end gap-2">
