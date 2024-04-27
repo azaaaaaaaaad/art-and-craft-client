@@ -1,9 +1,12 @@
+import { useLoaderData, useParams } from "react-router-dom";
 
 
 const ViewDetails = () => {
+    const {id} = useParams();
+    const details = useLoaderData();
     return (
         <div>
-            ViewDetails
+            <h2>{id}</h2>
         </div>
     );
 };

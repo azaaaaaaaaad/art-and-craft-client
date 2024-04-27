@@ -10,7 +10,7 @@ export const AuthContext = createContext(null)
 
 //social auth provider
 const googleProvider = new GoogleAuthProvider();
-// const githubProvider = new GithubAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
@@ -34,10 +34,10 @@ const AuthProvider = ({ children }) => {
     }
 
     //github login
-    // const githubLogin = () => {
-    //     setLoading(true)
-    //     return signInWithPopup(auth, githubProvider)
-    // }
+    const githubLogin = () => {
+        setLoading(true)
+        return signInWithPopup(auth, githubProvider)
+    }
 
     
 
@@ -66,6 +66,7 @@ const AuthProvider = ({ children }) => {
         createUser,
         signInUser,
         googleLogin,
+        githubLogin,
         logOut,
     }
 

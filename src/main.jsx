@@ -53,11 +53,12 @@ const router = createBrowserRouter([
         element: <SignIn></SignIn>,
       },
       {
-        path: '/viewDetails',
-        element: 
-        <PrivateRoute>
+        path: '/viewDetails/:id',
+        element:
+          <PrivateRoute>
             <ViewDetails></ViewDetails>
           </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5173/viewDetails/${params.id}`)
       },
     ]
   },

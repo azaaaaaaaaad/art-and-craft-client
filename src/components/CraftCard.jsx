@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 
 const CraftCard = ({ craft }) => {
 
-    const {  image,
-    item_name,
-    subcategory_name,
-    short_description,
-    price,
-    rating,
-    customization,
-    processing_time,
-    stock_status} = craft;
+    const {
+        _id,
+        image,
+        item_name,
+        subcategory_name,
+        short_description,
+        price,
+        rating,
+        customization,
+        processing_time,
+        stock_status } = craft;
 
     return (
         <div>
@@ -23,7 +25,7 @@ const CraftCard = ({ craft }) => {
                     <p>Rating: {rating}</p>
                     <p>Stock: {stock_status}</p>
                     <div className="card-actions justify-end">
-                        <Link to={'/viewDetails'}><button className="btn btn-primary">View Details</button></Link>
+                        <Link to={`/viewDetails/${_id}`}><button className="btn btn-primary">View Details</button></Link>
                     </div>
                 </div>
             </div>

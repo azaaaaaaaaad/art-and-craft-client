@@ -13,9 +13,7 @@ const Navbar = () => {
         <li><NavLink to={'/artAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>All Art & craft Items</NavLink></li>
         <li><NavLink to={'/addCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li>
         <li><NavLink to={'/myArtAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>My Art&Craft List</NavLink></li>
-        <li><NavLink to={'/signin'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Sign In</NavLink></li>
-        <li><NavLink to={'/signup'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Sign Up</NavLink></li>
-
+       
     </>
 
     return (
@@ -50,9 +48,12 @@ const Navbar = () => {
                                 className="btn">Sign Out</button>
                         </div>
                         :
-                        <div className="navbar-end">
+                        <div className="navbar-end gap-2">
                             <Link to={'/signin'}>
                                 <button className="btn">Sign In</button>
+                            </Link>
+                            <Link to={'/signup'}>
+                                <button className="btn">Sign Up</button>
                             </Link>
                         </div>
 

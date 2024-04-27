@@ -66,42 +66,42 @@ const AddCraftItems = () => {
                 <div className="space-y-4 text-center mt-6">
                 <div>
                     <label>Image URL:</label>
-                    <input className="border rounded" type="text" name="image" value={formData.image} onChange={handleChange} />
+                    <input required className="border rounded" type="text" name="image" value={formData.image} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Item Name:</label>
-                    <input className="border rounded"  type="text" name="item_name" value={formData.item_name} onChange={handleChange} />
+                    <input required  className="border rounded"  type="text" name="item_name" value={formData.item_name} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Subcategory Name:</label>
-                    <input className="border rounded"  type="text" name="subcategory_name" value={formData.subcategory_name} onChange={handleChange} />
+                    <input required  className="border rounded"  type="text" name="subcategory_name" value={formData.subcategory_name} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Short Description:</label>
-                    <input className="border rounded"  name="short_description" value={formData.short_description} onChange={handleChange} />
+                    <input required  className="border rounded"  name="short_description" value={formData.short_description} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Price:</label>
-                    <input className="border rounded"  type="text" name="price" value={formData.price} onChange={handleChange} />
+                    <input required  className="border rounded"  type="text" name="price" value={formData.price} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Rating:</label>
-                    <input className="border rounded"  type="text" name="rating" value={formData.rating} onChange={handleChange} />
+                    <input required  className="border rounded"  type="text" name="rating" value={formData.rating} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Customization:</label>
-                    <select className="border rounded"  name="customization" value={formData.customization} onChange={handleChange}>
+                    <select required  className="border rounded"  name="customization" value={formData.customization} onChange={handleChange}>
                         <option value="yes">Yes</option>
                         <option value="no">No</option>
                     </select>
                 </div>
                 <div>
                     <label>Processing Time:</label>
-                    <input className="border rounded"  type="text" name="processing_time" value={formData.processing_time} onChange={handleChange} />
+                    <input required  className="border rounded"  type="text" name="processing_time" value={formData.processing_time} onChange={handleChange} />
                 </div>
                 <div>
                     <label>Stock Status:</label>
-                    <select className="border rounded"  name="stock_status" value={formData.stock_status} onChange={handleChange}>
+                    <select required  className="border rounded"  name="stock_status" value={formData.stock_status} onChange={handleChange}>
                         <option value="in_stock">In Stock</option>
                         <option value="made_to_order">Made to Order</option>
                     </select>
