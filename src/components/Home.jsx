@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Banner from "./Banner";
 import CraftCard from "./CraftCard";
 import { Typewriter } from 'react-simple-typewriter'
+import ExtraOne from "./ExtraOne";
 
 
 const Home = () => {
@@ -11,7 +12,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            {/* <h2 className="text-2xl font-semibold text-center mt-6 mb-6">Craft items section </h2> */}
+            {/* craft items section */}
             <div className="text-2xl font-semibold text-center mt-6 mb-6">
                 <Typewriter words={['Craft', 'Items', 'Craft Items']} >
                 </Typewriter>
@@ -25,6 +26,7 @@ const Home = () => {
                         ></CraftCard>)
                 }
             </div>
+            <ExtraOne></ExtraOne>
         </div>
     );
 };

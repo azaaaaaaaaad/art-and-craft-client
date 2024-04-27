@@ -42,7 +42,7 @@ const SignIn = () => {
                 console.error(error);
                 Swal.fire({
                     icon: "error",
-                    title: error.message,
+                    title: "Invalid email or password.",
                     showConfirmButton: false,
                     timer: 1500
                 });

@@ -27,7 +27,10 @@ const ViewDetails = () => {
                     <p>Sub-Category: {subcategory_name}</p>
                     <hr />
                     <p>Price: {price}$</p>
-                    <p>Rating: {rating}</p>
+                    <div className="flex items-center">
+                        <p>Rating: {rating}</p>
+                        <FaStar></FaStar>
+                    </div>
                     <p>Description: {short_description}</p>
                     <hr />
                     <p>Processing-time: {processing_time}</p>
@@ -37,6 +40,7 @@ const ViewDetails = () => {
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };
