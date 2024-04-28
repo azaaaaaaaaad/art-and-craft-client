@@ -89,3 +89,18 @@ body {
 .swiper-slide:nth-child(10n) {
   background-color: rgb(54, 94, 77);
 }
+
+
+/* Light Theme */
+.light {
+  /* Define your light theme styles here */
+  color: black;
+  background-color: white;
+}
+
+/* Dark Theme */
+.dark {
+  /* Define your dark theme styles here */
+  color: white;
+  background-color: black;
+}
