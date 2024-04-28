@@ -49,7 +49,7 @@ const AddAllCraftItems = () => {
         });
 
         //send data to server
-        fetch(`http://localhost:5000/addCraftItems`, {
+        fetch(`https://art-server-nine.vercel.app/addCraftItems`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

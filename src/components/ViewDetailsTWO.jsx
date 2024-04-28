@@ -1,5 +1,6 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { Fade, Slide } from "react-awesome-reveal";
 
 
 const ViewDetailsTWO = () => {
@@ -23,6 +24,7 @@ const ViewDetailsTWO = () => {
 
     return (
         <div>
+            <Fade delay={1000}>
             <div className="card lg:card-side bg-base-100 shadow-xl">
                 <figure><img src={image} alt="Album" /></figure>
                 <div className="card-body">
@@ -43,6 +45,7 @@ const ViewDetailsTWO = () => {
                     </div>
                 </div>
             </div>
+            </Fade>
         </div>
     );
 };

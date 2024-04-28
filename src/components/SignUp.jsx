@@ -36,7 +36,7 @@ const SignUp = () => {
                 console.log(result.user);
 
                 const users = { name, email };
-                fetch(`http://localhost:5000/users/`, {
+                fetch(`https://art-server-nine.vercel.app/users/`, {
                     method: "POST",
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(users)
