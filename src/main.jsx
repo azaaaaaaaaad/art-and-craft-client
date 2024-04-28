@@ -16,6 +16,8 @@ import AuthProvider from './components/AuthProvider';
 import SignIn from './components/SignIn';
 import PrivateRoute from './components/PrivateRoute';
 import ViewDetails from './components/ViewDetails';
+import AddAllCraftItems from './components/AddAllCraftItems';
+import ViewDetailsTWO from './components/ViewDetailsTWO';
 
 
 const router = createBrowserRouter([
@@ -32,13 +34,20 @@ const router = createBrowserRouter([
       {
         path: '/artAndCraft',
         element: <AllArtCraft></AllArtCraft>,
+        loader: ()=> fetch(`http://localhost:5000/addCraftItems`)
       },
+      // {
+      //   path: '/addCraft',
+      //   element:
+      //     <PrivateRoute>
+      //       <AddCraftItems></AddCraftItems>
+      //     </PrivateRoute>,
+      // },
       {
-        path: '/addCraft',
-        element:
-          <PrivateRoute>
-            <AddCraftItems></AddCraftItems>
-          </PrivateRoute>,
+        path: '/addCraftItems',
+        element: <PrivateRoute>
+          <AddAllCraftItems></AddAllCraftItems>
+        </PrivateRoute>
       },
       {
         path: '/myArtAndCraft',
@@ -59,6 +68,14 @@ const router = createBrowserRouter([
             <ViewDetails></ViewDetails>
           </PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/crafts/${params.id}`)
+      },
+      {
+        path: '/viewDetailsTWO/:id',
+        element:
+          <PrivateRoute>
+            <ViewDetailsTWO></ViewDetailsTWO>
+          </PrivateRoute>,
+        loader: ({ params }) => fetch(`http://localhost:5000/addCraftItems/${params.id}`)
       },
     ]
   },

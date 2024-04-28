@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import userImage from '../assets/userImage.png'
-import { Tooltip } from 'react-tooltip'
 
 
 const Navbar = () => {
@@ -12,7 +11,8 @@ const Navbar = () => {
     const links = <>
         <li> <NavLink to={'/'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Home</NavLink></li>
         <li><NavLink to={'/artAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>All Art & craft Items</NavLink></li>
-        <li><NavLink to={'/addCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li>
+        {/* <li><NavLink to={'/addCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li> */}
+        <li><NavLink to={'/addCraftItems'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>Add Craft Item</NavLink></li>
         <li><NavLink to={'/myArtAndCraft'} className={({ isActive }) => isActive ? 'font-bold underline' : 'font-bold'}>My Art&Craft List</NavLink></li>
 
     </>
@@ -42,12 +42,9 @@ const Navbar = () => {
                     user ?
                         <div className="navbar-end gap-2">
                             {/* data-tip={user.displayName} */}
-                            <div className="w-10 rounded-full" data-tip data-for="my-tooltip">
+                            <div className="w-10 rounded-full tooltip tooltip-left" data-tip={user.displayName}>
                                 <img alt="user image" src={user?.photoURL || userImage} />
                             </div>
-                            <Tooltip id="my-tooltip" place="left">
-                                Hello to you too!
-                            </Tooltip>
                             <button
                                 onClick={logOut}
                                 className="btn ">Sign Out</button>

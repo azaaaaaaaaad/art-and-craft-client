@@ -1,18 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "./AuthProvider";
 import Swal from 'sweetalert2'
 
 
-const AddCraftItems = () => {
+const AddAllCraftItems = () => {
+
+    const { user } = useContext(AuthContext);
+
     const [formData, setFormData] = useState({
-        image: '',
-        item_name: '',
-        subcategory_name: '',
-        short_description: '',
-        price: '',
-        rating: '',
-        customization: '',
-        processing_time: '',
-        stock_status: ''
+        image: "",
+        itemName: "",
+        subcategoryName: "",
+        shortDescription: "",
+        price: "",
+        rating: "",
+        customization: "",
+        processingTime: "",
+        stockStatus: "",
+        userEmail: "",
+        userName: ""
     });
 
     const handleChange = (e) => {
@@ -25,30 +31,34 @@ const AddCraftItems = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // You can handle form submission logic here
+        // Handle form submission, e.g., send data to server
         console.log(formData);
         // Reset form data
         setFormData({
             image: '',
-            item_name: '',
-            subcategory_name: '',
-            short_description: '',
+            itemName: '',
+            subcategoryName: '',
+            shortDescription: '',
             price: '',
             rating: '',
             customization: '',
-            processing_time: '',
-            stock_status: ''
+            processingTime: '',
+            stockStatus: '',
+            userEmail: '',
+            userName: ''
         });
 
         //send data to server
-        fetch(`http://localhost:5000/crafts`, {
+        fetch(`http://localhost:5000/addCraftItems`, {
             method: 'POST',
-            headers: { 'content-type': 'application/json' },
+            headers: {
+                'content-type': 'application/json'
+            },
             body: JSON.stringify(formData)
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         icon: "success",
@@ -60,7 +70,7 @@ const AddCraftItems = () => {
             })
     };
     return (
-        <div >
+        <div>
             <h2 className="text-center text-2xl font-semibold">Add Craft Items</h2>
             <form onSubmit={handleSubmit}>
                 <div className="space-y-4 text-center mt-6">
@@ -70,15 +80,15 @@ const AddCraftItems = () => {
                     </div>
                     <div>
                         <label>Item Name:</label>
-                        <input required className="border rounded" type="text" name="item_name" value={formData.item_name} onChange={handleChange} />
+                        <input required className="border rounded" type="text" name="itemName" value={formData.itemName} onChange={handleChange} />
                     </div>
                     <div>
                         <label>Subcategory Name:</label>
-                        <input required className="border rounded" type="text" name="subcategory_name" value={formData.subcategory_name} onChange={handleChange} />
+                        <input required className="border rounded" type="text" name="subcategoryName" value={formData.subcategoryName} onChange={handleChange} />
                     </div>
                     <div>
                         <label>Short Description:</label>
-                        <input required className="border rounded" name="short_description" value={formData.short_description} onChange={handleChange} />
+                        <input required className="border rounded" name="shortDescription" value={formData.shortDescription} onChange={handleChange} />
                     </div>
                     <div>
                         <label>Price:</label>
@@ -97,20 +107,28 @@ const AddCraftItems = () => {
                     </div>
                     <div>
                         <label>Processing Time:</label>
-                        <input required className="border rounded" type="text" name="processing_time" value={formData.processing_time} onChange={handleChange} />
+                        <input required className="border rounded" type="text" name="processingTime" value={formData.processingTime} onChange={handleChange} />
                     </div>
                     <div>
                         <label>Stock Status:</label>
-                        <select required className="border rounded" name="stock_status" value={formData.stock_status} onChange={handleChange}>
-                            <option value="in_stock">In Stock</option>
-                            <option value="made_to_order">Made to Order</option>
+                        <select required className="border rounded" name="stockStatus" value={formData.stockStatus} onChange={handleChange}>
+                            <option value="In stock">In stock</option>
+                            <option value="Made to Order">Made to Order</option>
                         </select>
                     </div>
-                    <button className="btn" type="submit">Add Craft Items</button>
+                    <div>
+                        <label>User Email:</label>
+                        <input required defaultValue={user.email} className="border rounded" type="email" name="userEmail" value={formData.userEmail} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label>User Name:</label>
+                        <input required defaultValue={user.displayName} className="border rounded" type="text" name="userName" value={formData.userName} onChange={handleChange} />
+                    </div>
+                    <button className="btn" type="submit">Add Craft</button>
                 </div>
             </form>
         </div>
     );
 };
 
-export default AddCraftItems;
+export default AddAllCraftItems;
