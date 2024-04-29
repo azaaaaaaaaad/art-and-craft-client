@@ -43,6 +43,8 @@ const router = createBrowserRouter([
       //       <AddCraftItems></AddCraftItems>
       //     </PrivateRoute>,
       // },
+      //jrazad10@gmail.com
+      //azad
       {
         path: '/addCraftItems',
         element: <PrivateRoute>
@@ -51,7 +53,9 @@ const router = createBrowserRouter([
       },
       {
         path: '/myArtAndCraft',
-        element: <MyArtCraft></MyArtCraft>,
+        element: <PrivateRoute>
+          <MyArtCraft></MyArtCraft>
+        </PrivateRoute>,
       },
       {
         path: '/signup',

@@ -17,8 +17,8 @@ const ViewDetailsTWO = () => {
         customization,
         processingTime,
         stockStatus,
-        userEmail,
-        userName
+        email,
+        name
     } = details;
 
 
@@ -40,6 +40,8 @@ const ViewDetailsTWO = () => {
                     <hr />
                     <p>Processing-time: {processingTime}</p>
                     <p>Stock: {stockStatus}</p>
+                    {/* <p>{email}</p>
+                    <p>{name}</p> */}
                     <div className="card-actions justify-end">
                         <Link to={'/'}><button className="btn btn-active">Go Back</button></Link>
                     </div>

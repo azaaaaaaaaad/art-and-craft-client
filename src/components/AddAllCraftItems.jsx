@@ -17,8 +17,8 @@ const AddAllCraftItems = () => {
         customization: "",
         processingTime: "",
         stockStatus: "",
-        userEmail: "",
-        userName: ""
+        email: "",
+        name: ""
     });
 
     const handleChange = (e) => {
@@ -44,8 +44,8 @@ const AddAllCraftItems = () => {
             customization: '',
             processingTime: '',
             stockStatus: '',
-            userEmail: '',
-            userName: ''
+            email: '',
+            name: ''
         });
 
         //send data to server
@@ -118,11 +118,11 @@ const AddAllCraftItems = () => {
                     </div>
                     <div>
                         <label>User Email:</label>
-                        <input required defaultValue={user.email} className="border rounded" type="email" name="userEmail" value={formData.userEmail} onChange={handleChange} />
+                        <input required defaultValue={user.email} className="border rounded" type="email" name="email" value={formData.email} onChange={handleChange} />
                     </div>
                     <div>
                         <label>User Name:</label>
-                        <input required defaultValue={user.displayName} className="border rounded" type="text" name="userName" value={formData.userName} onChange={handleChange} />
+                        <input required defaultValue={user.displayName} className="border rounded" type="text" name="name" value={formData.name} onChange={handleChange} />
                     </div>
                     <button className="btn" type="submit">Add Craft</button>
                 </div>
