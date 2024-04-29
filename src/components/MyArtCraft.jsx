@@ -7,7 +7,7 @@ const MyArtCraft = () => {
     const [item, setItem] = useState([]);
     // console.log(user);
     useEffect(() => {
-        fetch(`http://localhost:5000/myArtAndCraft/${user.email}`)
+        fetch(`https://art-server-nine.vercel.app/myArtAndCraft/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setItem(data);
