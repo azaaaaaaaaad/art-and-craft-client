@@ -87,6 +87,9 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <ProductDetails></ProductDetails>
         </PrivateRoute>
+      },
+      {
+        // element: <ProductDetails
       }
     ]
   },
