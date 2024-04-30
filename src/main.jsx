@@ -18,6 +18,7 @@ import PrivateRoute from './components/PrivateRoute';
 import ViewDetails from './components/ViewDetails';
 import AddAllCraftItems from './components/AddAllCraftItems';
 import ViewDetailsTWO from './components/ViewDetailsTWO';
+import ProductDetails from './components/ProductDetails';
 
 
 const router = createBrowserRouter([
@@ -81,6 +82,12 @@ const router = createBrowserRouter([
           </PrivateRoute>,
         loader: ({ params }) => fetch(`https://art-server-nine.vercel.app/addCraftItems/${params.id}`)
       },
+      {
+        path: '/myArtAndCraft/:id',
+        element: <PrivateRoute>
+          <ProductDetails></ProductDetails>
+        </PrivateRoute>
+      }
     ]
   },
 ]);

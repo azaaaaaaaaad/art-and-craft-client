@@ -1,10 +1,13 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from './AuthProvider';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyArtCraft = () => {
 
     const { user } = useContext(AuthContext)
     const [item, setItem] = useState([]);
+    const [control, setControl] = useState(false);
     // console.log(user);
     useEffect(() => {
         fetch(`https://art-server-nine.vercel.app/myArtAndCraft/${user.email}`)
@@ -12,7 +15,41 @@ const MyArtCraft = () => {
             .then(data => {
                 setItem(data);
             })
-    }, [user])
+    }, [user, control])
+
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:5000/addCraftItems/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your Coffee has been deleted.',
+                                'success'
+                            )
+
+                            setControl(!control)
+                        }
+                    })
+
+            }
+        })
+    }
 
     return (
         <div>
@@ -33,8 +70,8 @@ const MyArtCraft = () => {
                                     <p>Customization: {p.customization}</p>
                                     <p>Stock Status: {p.stockStatus}</p>
                                     <div className="card-actions">
-                                        <button className="btn btn-active">Update</button>
-                                        <button className="btn btn-active">Delete</button>
+                                        <Link to={`/myArtAndCraft/${p._id}`}><button className="btn btn-active">Update</button></Link>
+                                        <button onClick={() => handleDelete(p._id)} className="btn btn-active">Delete</button>
                                     </div>
                                 </div>
                             </div>
@@ -48,16 +85,3 @@ const MyArtCraft = () => {
 
 export default MyArtCraft;
 
-// const [formData, setFormData] = useState({
-//     image: "",
-//     itemName: "",
-//     subcategoryName: "",
-//     shortDescription: "",
-//     price: "",
-//     rating: "",
-//     customization: "",
-//     processingTime: "",
-//     stockStatus: "",
-//     email: "",
-//     name: ""
-// });
