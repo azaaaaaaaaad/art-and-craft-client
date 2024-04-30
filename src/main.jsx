@@ -9,7 +9,6 @@ import Root from './components/Root';
 import Home from './components/Home';
 import Error from './components/Error';
 import AllArtCraft from './components/AllArtCraft';
-import AddCraftItems from './components/AddCraftItems';
 import MyArtCraft from './components/MyArtCraft';
 import SignUp from './components/SignUp';
 import AuthProvider from './components/AuthProvider';
@@ -30,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch(`https://art-server-nine.vercel.app/crafts`)
+        loader: () => fetch(`https://art-server-nine.vercel.app/crafts`),
       },
       {
         path: '/artAndCraft',
@@ -88,9 +87,10 @@ const router = createBrowserRouter([
           <ProductDetails></ProductDetails>
         </PrivateRoute>
       },
-      {
-        // element: <ProductDetails
-      }
+      // {
+      //   element: <ArtAndCraftCategories></ArtAndCraftCategories>,
+      //   loader:()=> fetch(`https://art-server-nine.vercel.app/subCategories`),
+      // },
     ]
   },
 ]);

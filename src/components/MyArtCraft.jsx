@@ -7,7 +7,7 @@ const MyArtCraft = () => {
     const { user } = useContext(AuthContext);
     const [item, setItem] = useState([]);
     const [control, setControl] = useState(false);
-    const [customizationFilter, setCustomizationFilter] = useState('all'); // Add state for customization filter
+    const [customizationFilter, setCustomizationFilter] = useState('all'); 
 
     useEffect(() => {
         fetch(`https://art-server-nine.vercel.app/myArtAndCraft/${user.email}`)

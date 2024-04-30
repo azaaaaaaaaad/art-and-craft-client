@@ -10,7 +10,7 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/addCraftItems/${id}`)
+        fetch(`https://art-server-nine.vercel.app/addCraftItems/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProduct(data)
@@ -38,7 +38,7 @@ const ProductDetails = () => {
         console.log(updateInfo);
 
         //update data to server
-        fetch(`http://localhost:5000/addCraftItems/${id}`,{
+        fetch(`https://art-server-nine.vercel.app/addCraftItems/${id}`,{
             method: "PUT",
             headers: {"content-type" : "application/json"},
             body: JSON.stringify(updateInfo)

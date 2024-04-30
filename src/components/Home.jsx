@@ -7,6 +7,7 @@ import ExtraTwo from "./ExtraTwo";
 import { Fade } from "react-awesome-reveal";
 import { useEffect, useState } from "react";
 import './styles.css';
+import ArtAndCraftCategories from "./ArtAndCraftCategories";
 
 
 const Home = () => {
@@ -55,10 +56,15 @@ const Home = () => {
                     }
                 </Fade>
             </div>
-            <Fade direction="right">
+            <div className="mt-6">
+                <Fade direction="right">
+                    <ArtAndCraftCategories></ArtAndCraftCategories>
+                </Fade>
+            </div>
+            <Fade direction="left">
                 <ExtraOne></ExtraOne>
             </Fade>
-            <Fade direction="left">
+            <Fade direction="right">
                 <ExtraTwo></ExtraTwo>
             </Fade>
 
