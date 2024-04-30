@@ -30,7 +30,7 @@ const MyArtCraft = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:5000/addCraftItems/${id}`, {
+                fetch(`https://art-server-nine.vercel.app/addCraftItems/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
